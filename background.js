@@ -1,6 +1,6 @@
 // FOR NOTES ONLY:
 // A common need for extensions is to have a single long-running script to 
-// manage some task or state. The background script exists for the lifetime of your 
+// manage certain tasks. The background script exists for the lifetime of your 
 // extension, and only one instance of it at a time is active. The background script, 
 // unlike the content script has access to a full array of Chrome APIs, including 
 // the fetch API, which is used in this extension. Calling the fetch API in 

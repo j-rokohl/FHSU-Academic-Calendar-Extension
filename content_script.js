@@ -3,7 +3,7 @@
 // By using the standard Document Object Model (DOM), they can read details of 
 // the web pages the browser visits, or make changes to them. The background
 // script does not have access to the DOM elements 'window' or 'document' and will
-// result in an error if used. 
+// result in errors if used. 
 
 // Info on how content scripts and background scripts work together:
 // https://developer.chrome.com/docs/extensions/reference/runtime/#example-content-msg

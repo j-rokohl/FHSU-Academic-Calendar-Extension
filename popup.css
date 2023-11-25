@@ -2,6 +2,9 @@ body {
     width: 325px;
     margin: 2em;
 }
+hr {
+    border: solid .25px  #ededed;
+}
 #date {
     font-size: 18px;
     font-weight: 600;
@@ -15,30 +18,6 @@ body {
 .cal {
     margin: 0 5px 0 5px;
 }
-.logo {
-    width: 25px;
-    margin-top: 8px;
-    margin-right: 8px;
-}
-.nextDate {
-    font-size: 1em;
-    margin-top: 0;
-    margin-left: 70px;
-    color: #858585;
-}
-.main{
-    margin: 10px 10px 0 70px;
-    font-size: 14px;
-}
-hr{
-    border: solid .25px  #ededed;
-}
-.event {
-    border: 1.2px solid #dbdbdb;
-    border-radius: 1em;
-    min-height: 80px;
-    margin-top: 8px;
-}
 .div {
     border: solid 5px #FFAF06;
     margin-left: 8px;
@@ -46,9 +25,30 @@ hr{
     width: 35px;
     height: 30px;
 }
-.mt-3{
+.event {
+    border: 1.2px solid #dbdbdb;
+    border-radius: 1em;
+    min-height: 80px;
+    margin-top: 8px;
+}
+.logo {
+    width: 25px;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+.main {
+    margin: 10px 10px 0 70px;
+    font-size: 14px;
+}
+.mt-3 {
     margin-top: 6px !important;
     font-size: 12px;
     font-weight: 600;
     text-align: center;
+}
+.nextDate {
+    font-size: 1em;
+    margin-top: 0;
+    margin-left: 70px;
+    color: #858585;
 }
