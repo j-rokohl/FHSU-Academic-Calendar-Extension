@@ -1,5 +1,5 @@
 # FHSU Academic Calendar Extension
-A simple browser extension that displays upcoming events listed on the official FHSU Academic Calendar, which can be found here [https://www.fhsu.edu/registrar/academic-calendar/] (https://www.fhsu.edu/registrar/academic-calendar/) in the form of a downloadable iCal file. The iCal file was converted into a JSON file for easier manipulation of the data.
+A simple browser extension that displays upcoming events listed on the official FHSU Academic Calendar, which can be found here [https://www.fhsu.edu/registrar/academic-calendar/] in the form of a downloadable iCal file. The iCal file was converted into a JSON file for easier manipulation of the data.
 
 The purpose of this browser extension is to learn the proper structure and syntax to develop Chrome Extensions, as well as to provide an easy way to quickly view the current academic calendar, without needing to log into an online account or check the website.
 
