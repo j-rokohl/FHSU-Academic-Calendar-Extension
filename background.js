@@ -40,7 +40,6 @@ function toHTML(json) {
     });
 }
 
-
 function addDate () {
     window.addEventListener("DOMContentLoaded", function (){
         const dInfo = document.getElementById("date");
@@ -48,15 +47,13 @@ function addDate () {
     })
 }
 
-
-    fetcher();
-    addDate();
-
+// Run functions:
+fetcher();
+addDate();
 
 // To handle Chromium bug 'Uncaught (in promise) Error: A listener indicated 
 // an asynchronous response by returning true, but the message channel closed 
 // before a response was received':
-
 if (browser.runtime.lastError) {
     console.error(browser.runtime.lastError);
     }
