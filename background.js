@@ -1,3 +1,14 @@
+// FOR NOTES ONLY:
+// A common need for extensions is to have a single long-running script to 
+// manage some task or state. The background script exists for the lifetime of your 
+// extension, and only one instance of it at a time is active. The background script, 
+// unlike the content script has access to a full array of Chrome APIs, including 
+// the fetch API, which is used in this extension. Calling the fetch API in 
+// the content script results in a 404 error within the console.
+
+// Info on how content scripts and background scripts work together:
+// https://developer.chrome.com/docs/extensions/reference/runtime/#example-content-msg
+
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const dateObject = new Date();
 const date = new Date().toLocaleDateString();
@@ -5,7 +16,6 @@ const month = date.split("/", 1);
 const spellMonth = months[dateObject.getMonth()];
 const theDay = date.split("/",2);
 const year = date.split("/",3);
-const data = document.getElementById("json");
 
 function fetcher (){
     fetch('calendar.json')
@@ -15,19 +25,19 @@ function fetcher (){
         return true;
 }
 
+let data = "";
 function toHTML(json) {
     json.forEach((e) => {
         const eventMonth = e.Start.split("/", 1);
         const eventDay = e.Start.split("/", 2);
-        console.log(Number(theDay[1]) +","+ Number(eventDay[1]));
         if (Number(month) > Number(eventMonth)){
-            //nothing
+            // do nothing.
         }
         else if (Number(month) == Number(eventMonth) && Number(theDay[1]) > Number(eventDay[1])) {
-            //nothing
+            // do nothing.
         }
         else {
-            data.innerHTML +=
+            data = data +
             `<div class="event">
             <div class="book">
                 <img src="./cal-icon-top.svg" width="50" class="cal">
@@ -35,26 +45,15 @@ function toHTML(json) {
             </div>
             <p class="main">${e.Title}</p>
             <p class="nextDate">${e.Start}</p>
-            </div>`
+            </div>`;
+            chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+                if (message === 'get-data') {
+                  sendResponse(data);
+                }
+              });
         }
     });
 }
 
-function addDate () {
-    window.addEventListener("DOMContentLoaded", function (){
-        const dInfo = document.getElementById("date");
-        dInfo.innerHTML += spellMonth + " " + theDay[1] + ", " + year[2];
-    })
-}
-
-// Run functions:
+// Run function:
 fetcher();
-addDate();
-
-// To handle Chromium bug 'Uncaught (in promise) Error: A listener indicated 
-// an asynchronous response by returning true, but the message channel closed 
-// before a response was received':
-if (browser.runtime.lastError) {
-    console.error(browser.runtime.lastError);
-    }
-

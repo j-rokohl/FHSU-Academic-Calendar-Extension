@@ -15,8 +15,12 @@
         "extension_pages": "default-src 'self'; connect-src 'self';"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "/background.js"
     },
+    "content_scripts": [{
+        "js": ["content_script.js"],
+        "matches": ["<all_urls>"]
+    }],
     "action": {
         "default_popup": "popup.html"
     }

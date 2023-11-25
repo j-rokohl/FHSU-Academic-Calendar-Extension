@@ -1,17 +1,36 @@
 // FOR NOTES ONLY:
-// A content script is not needed in this extension.
-
 // Content scripts are JavaScript files that run in the context of web pages. 
 // By using the standard Document Object Model (DOM), they can read details of 
-// the web pages the browser visits, or make changes to them. Additionally,
-// content script only has limited access to Chrome api, mostly chrome.runtime event.
+// the web pages the browser visits, or make changes to them. The background
+// script does not have access to the DOM elements 'window' or 'document' and will
+// result in an error if used. 
 
-// A common need for extensions is to have a single long-running script to 
-// manage some task or state. The background script exists for the lifetime of your 
-// extension, and only one instance of it at a time is active. The background script, 
-// unlike the content script has access to a full array of Chrome APIs, including 
-// the fetch API, which is used in the background script of THIS extension. Calling the 
-// fetch API in THIS content script results in a 404 error within the console.
+// Info on how content scripts and background scripts work together:
+// https://developer.chrome.com/docs/extensions/reference/runtime/#example-content-msg
 
-// Since this can be confusing, I am including this file to clarify the structure
-// of this extension.
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const dateObject = new Date();
+const date = new Date().toLocaleDateString();
+
+const spellMonth = months[dateObject.getMonth()];
+const theDay = date.split("/",2);
+const year = date.split("/",3);
+
+function addDate () {
+    window.addEventListener("DOMContentLoaded", function (){
+        const dInfo = document.querySelector("#date");
+        dInfo.innerHTML += spellMonth + " " + theDay[1] + ", " + year[2];
+    })
+}
+addDate();
+
+let json = document.querySelector("#json");
+function addData () {
+    window.addEventListener("DOMContentLoaded", function (){
+        chrome.runtime.sendMessage('get-data', (response) => {
+            // console.log('received data', response);
+            json.innerHTML += response;
+        });
+    })
+}
+addData();
