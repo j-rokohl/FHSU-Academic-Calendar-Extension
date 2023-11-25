@@ -11,7 +11,7 @@ To install this extension:
 
 1) Download the zipped folder.
 2) Unzip the folder in your downloads.
-3) Go to [chrome://extensions] within your browser.
+3) Go to [chrome://extensions](chrome://extensions) within your browser.
 4) Toggle the 'Developer Mode' switch in the upper right-hand corner.
 5) Click the button that appears called 'Load unpacked'.
 6) Select the unzipped folder you downloaded.
