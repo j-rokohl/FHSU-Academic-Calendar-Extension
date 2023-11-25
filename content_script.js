@@ -19,7 +19,9 @@ const year = date.split("/",3);
 function addDate () {
     window.addEventListener("DOMContentLoaded", function (){
         const dInfo = document.querySelector("#date");
-        dInfo.innerHTML += spellMonth + " " + theDay[1] + ", " + year[2];
+        if(document.querySelector("#date") != null){
+            dInfo.innerHTML += spellMonth + " " + theDay[1] + ", " + year[2];
+        }
     })
 }
 addDate();
@@ -29,7 +31,10 @@ function addData () {
     window.addEventListener("DOMContentLoaded", function (){
         chrome.runtime.sendMessage('get-data', (response) => {
             // console.log('received data', response);
-            json.innerHTML += response;
+            if(document.querySelector("#json") != null){
+                json.innerHTML += response;
+            }
+            return true;
         });
     })
 }
