@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "FHSU Academic Calendar",
+    "description": "This extension will display the Fort Hays State University Academic Calendar for the current semester.",
+    "version": "0.1",
+    "icons": {
+        "16": "logo/logo-16.png",
+        "48": "logo/logo-48.png",
+        "128": "logo/logo-128.png"
+    },
+    "permissions": [
+        "tabs"
+    ],
+    "content_security_policy": {
+        "extension_pages": "default-src 'self'; connect-src 'self';"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
