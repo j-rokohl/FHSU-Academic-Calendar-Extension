@@ -11,7 +11,7 @@
 // extension, and only one instance of it at a time is active. The background script, 
 // unlike the content script has access to a full array of Chrome APIs, including 
 // the fetch API, which is used in the background script of THIS extension. Calling the 
-// fetch api in THIS content script results in a 404 error within the console.
+// fetch API in THIS content script results in a 404 error within the console.
 
-// Since this can be confusing, I am including this file clarify the structure
+// Since this can be confusing, I am including this file to clarify the structure
 // of this extension.
