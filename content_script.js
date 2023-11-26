@@ -31,8 +31,14 @@ function addData () {
     window.addEventListener("DOMContentLoaded", function (){
         chrome.runtime.sendMessage('get-data', (response) => {
             // console.log('received data', response);
-            if(document.querySelector("#json") != null){
+            if(response != null){
                 json.innerHTML += response;
+            }
+            else if(response != undefined){
+                json.innerHTML += response;
+            }
+            else {
+                window.location.reload(); // Refresh popup
             }
             return true;
         });
