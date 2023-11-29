@@ -8,6 +8,7 @@
 // Info on how content scripts and background scripts work together:
 // https://developer.chrome.com/docs/extensions/reference/runtime/#example-content-msg
 
+const json = document.querySelector("#json");
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const dateObject = new Date();
 const date = new Date().toLocaleDateString();
@@ -26,19 +27,30 @@ function addDate () {
 }
 addDate();
 
-let json = document.querySelector("#json");
 function addData () {
     window.addEventListener("DOMContentLoaded", function (){
         chrome.runtime.sendMessage('get-data', (response) => {
             // console.log('received data', response);
             if(response != null){
-                json.innerHTML += response;
+                try {
+                    json.innerHTML = response;
+                }
+                catch {
+                    // Prevents "Uncaught TypeError: cannot set property 'innerHTML' of null"
+                    // I could not find a fix to this error
+                }
             }
             else if(response != undefined){
-                json.innerHTML += response;
+                try {
+                    json.innerHTML = response;
+                }
+                catch {
+                    // Prevents "Uncaught TypeError: cannot set property 'innerHTML' of null"
+                    // I could not find a fix to this error
+                }
             }
             else {
-                window.location.reload(); // Refresh popup
+                window.location.reload(); // Refresh popup if needed
             }
             return true;
         });
